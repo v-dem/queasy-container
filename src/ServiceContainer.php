@@ -11,14 +11,13 @@ use queasy\helper\System;
 
 class ServiceContainer implements ContainerInterface
 {
-    protected $config;
+    protected $servicesConfig;
 
-    protected $services;
+    protected $services = array();
 
-    public function __construct($config)
+    public function __construct($servicesConfig)
     {
-        $this->config = $config;
-        $this->services = array();
+        $this->servicesConfig = $servicesConfig;
     }
 
     public function __isset($serviceId)
@@ -28,10 +27,6 @@ class ServiceContainer implements ContainerInterface
 
     public function __get($serviceId)
     {
-        if ('config' === $serviceId) {
-            return $this->config;
-        }
-
         return $this->get($serviceId);
     }
 
@@ -64,7 +59,7 @@ class ServiceContainer implements ContainerInterface
     public function get($serviceId)
     {
         if ('config' === $serviceId) {
-            return $this->config;
+            return $this->servicesConfig;
         }
 
         if (!isset($this->services[$serviceId])) {
