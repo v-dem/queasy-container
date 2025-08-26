@@ -21,17 +21,6 @@ Lightweight implementation of PSR-11 Container Interface
 #### Initialization
 
 ```php
-$db = new queasy\db\Db(
-    [
-        'connection' => [
-            'dsn' => 'pgsql:host=localhost;dbname=test',
-            'user' => 'test_user',
-            'password' => 'test_password',
-            'options' => [
-                ...options...
-            ]
-        ]
-    ]
-);
+// TODO:
 ```
 
