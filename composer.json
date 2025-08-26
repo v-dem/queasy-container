@@ -1,0 +1,39 @@
+{
+    "name": "v-dem/queasy-container",
+    "description": "PSR-11 container implementation, part of QuEasy PHP framework",
+    "homepage": "https://github.com/v-dem/queasy-container/",
+    "keywords": ["php", "psr-11", "container", "dependency injection"],
+    "license": "LGPL-3.0-only",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Vitaly Demyanenko",
+            "email": "vitaly_demyanenko@yahoo.com"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist"
+    },
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~10",
+        "ext-xdebug": "*"
+    },
+    "autoload":{
+        "psr-4":{
+            "queasy\\container\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "queasy\\container\\tests\\": "tests/src/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover coverage.xml"
+        ]
+    }
+}
