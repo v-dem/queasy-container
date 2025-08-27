@@ -21,6 +21,14 @@ Lightweight implementation of PSR-11 Container Interface
 #### Initialization
 
 ```php
-// TODO:
+$container = new queasy\container\ServiceContainer([
+    'logger' => function($container) {
+        return new queasy\log\Logger([
+            'path' => __DIR__ . '/logs/debug.log'
+        ]);
+    }
+]);
+
+$container->logger->debug('Test');
 ```
 

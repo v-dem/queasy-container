@@ -3,11 +3,8 @@
 namespace queasy\container;
 
 use Exception;
-use InvalidArgumentException;
 
 use Psr\Container\ContainerInterface;
-
-use queasy\helper\System;
 
 class ServiceContainer implements ContainerInterface
 {
@@ -15,7 +12,7 @@ class ServiceContainer implements ContainerInterface
 
     protected $services = array();
 
-    public function __construct($servicesConfig)
+    public function __construct(array $servicesConfig)
     {
         $this->servicesConfig = $servicesConfig;
     }
@@ -68,9 +65,11 @@ class ServiceContainer implements ContainerInterface
             }
 
             try {
-                $this->services[$serviceId] = $this->servicesConfig[$serviceId]($this);
+                $this->services[$serviceId] = is_callable($this->servicesConfig[$serviceId])
+                    ? $this->servicesConfig[$serviceId]($this)
+                    : $this->servicesConfig[$serviceId];
             } catch (Exception $e) {
-                throw new ContainerException('');
+                throw new ContainerException("Cannot initialize service \"$serviceId\"");
             }
         }
 
