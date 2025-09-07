@@ -20,6 +20,8 @@ Lightweight implementation of PSR-11 Container Interface
 
 #### Initialization
 
+Each item in array passed to `ServiceContainer` constructor should be callable which returns instance of of requested service.
+
 ```php
 $container = new queasy\container\ServiceContainer([
     'logger' => function($container) {

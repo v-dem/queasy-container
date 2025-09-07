@@ -12,7 +12,7 @@ class ServiceContainer implements ContainerInterface
 
     protected $services = array();
 
-    public function __construct(array $servicesConfig)
+    public function __construct($servicesConfig)
     {
         $this->servicesConfig = $servicesConfig;
     }
